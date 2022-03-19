@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import ReactDOM from "react-dom";
+import Body from "./Artist"
 
 class App extends React.Component {
   constructor() {
@@ -21,11 +22,9 @@ class App extends React.Component {
     return (
       <div>
         <h1>Robby's Italian Fine Art Museum</h1>
-        <ul>
-          {this.state.artists.map((artist) => {
-            return <li>{artist.name}</li>;
-          })}
-        </ul>
+        <div>
+          <Body artists={this.state.artists} />
+        </div>
         <h3>hello world</h3>
       </div>
     );

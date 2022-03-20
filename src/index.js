@@ -1,53 +1,45 @@
-import axios from "axios";
 import React from "react";
 import { render } from "react-dom";
-import Body from "./Artist";
-import store from "./store";
-import { Provider, connect } from "react-redux";
+import axios from "axios";
 
-const App = connect(
-  (state) => {
-    return state;
-  },
-  (dispatch) => {
-    return {
-      bootstrap: async () => {
-        const artists = await axios.get("/api/artists");
-        dispatch({ type: "LOAD_ARTIST", artists });
-      },
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      artists: [],
+      museums: [],
     };
   }
-)(
-  class App extends React.Component {
-    constructor() {
-      super();
-      this.state = {
-        artists: [],
-      };
-    }
 
-    async componentDidMount() {
-      const artistsData = (await axios.get("/api/artists")).data;
-      console.log("this is the artist data", artistsData);
-      this.setState({ artists: artistsData });
-    }
-
-    render() {
-      return (
-        <div>
-          <h1>Robby's Italian Fine Art Museum</h1>
-          <div>
-            <Body artists={this.state.artists} />
-          </div>
-          <h3>hello world</h3>
-        </div>
-      );
-    }
+  async componentDidMount() {
+    const artists = await axios.get("/api/artists");
+    const museums = await axios.get("/api/museums");
+    this.setState({
+      artists: artists.data,
+      museums: museums.data,
+    });
   }
-);
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.querySelector("#root")
-);
+
+  render() {
+    const artists = this.state.artists;
+    const museums = this.state.museums;
+    return (
+      <div>
+        <h1>Welcome to Robby's Italian Art Tour Guide Site</h1>
+        <h2>Here is my list of "TOP TIER" Italian Artists</h2>
+        <ul>
+          {artists.map((artist) => {
+            return <li> {artist.name} </li>;
+          })}
+        </ul>
+        <h2>Museums to view their works</h2>
+        <ul>
+          {museums.map((museum) => {
+            return <li>{museum.name}</li>;
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
+render(<App />, document.querySelector("#root"));

@@ -1,6 +1,9 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { render } from "react-dom";
 import axios from "axios";
+import Artists from "./Artists";
+import Museums from "./Museums";
 
 class App extends React.Component {
   constructor() {
@@ -27,17 +30,13 @@ class App extends React.Component {
       <div>
         <h1>Welcome to Robby's Italian Art Tour Guide Site</h1>
         <h2>Here is my list of "TOP TIER" Italian Artists</h2>
-        <ul>
-          {artists.map((artist) => {
-            return <li> {artist.name} </li>;
-          })}
-        </ul>
+        <div>
+          <Artists artists={artists} />
+        </div>
         <h2>Museums to view their works</h2>
-        <ul>
-          {museums.map((museum) => {
-            return <li>{museum.name}</li>;
-          })}
-        </ul>
+        <div>
+          <Museums museums={museums} />
+        </div>
       </div>
     );
   }

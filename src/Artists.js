@@ -5,7 +5,7 @@ import store from "./store";
 
 const destroy = async (artist) => {
   await axios.delete(`/api/artists/${artist.id}`);
-  store.dispatch({ type: "DESTORY_ARTIST", artist });
+  store.dispatch({ type: "DESTROY_ARTIST", artist });
 };
 
 const Artists = ({ artists }) => {
@@ -14,7 +14,7 @@ const Artists = ({ artists }) => {
       {artists.map((artist) => {
         return (
           <li>
-            {artist.name} --
+            {artist.name} -- {artist.period} --
             <button onClick={() => destroy(artist)}>Delete</button>
           </li>
         );

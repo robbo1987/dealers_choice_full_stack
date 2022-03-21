@@ -10,6 +10,10 @@ const Artist = db.define("artist", {
      validate: {
          notEmpty: true
      }
+ },
+ period: {
+     type: Sequelize.ENUM("High Renaissance","Late Renaissance", "Renaissance","Baroque","Modern")
+
  }   
 })
 
@@ -77,14 +81,14 @@ const init = async() => {
 try{
     await db.sync({force:true})
     const [Leonardo, MichelAngelo ,Raphael, Botticelli,Caravaggio,Donatello,Bellin,Modigliani,Uffizi,Accademia,Borghese,Bargello,Vatican,Castel] = await Promise.all([
-        Artist.create({name:"Leonardo DaVinci"}),
-        Artist.create({name:"Michaelangelo"}),
-        Artist.create({name:"Raphael"}),
-        Artist.create({name:"Botticelli"}),
-        Artist.create({name:"Carvaggio"}),
-        Artist.create({name:"Donatello"}),
-        Artist.create({name:"Bellin"}),
-        Artist.create({name:"Modigliani"}),
+        Artist.create({name:"Leonardo DaVinci", period:"High Renaissance"}),
+        Artist.create({name:"Michaelangelo", period:"High Renaissance"}),
+        Artist.create({name:"Raphael", period:"High Renaissance"}),
+        Artist.create({name:"Botticelli", period:"Late Renaissance"}),
+        Artist.create({name:"Carvaggio", period:"Renaissance"}),
+        Artist.create({name:"Donatello", period:"Renaissance"}),
+        Artist.create({name:"Bellini", period:"Renaissance"}),
+        Artist.create({name:"Modigliani", period:"Modern"}),
         Museum.create({name:"Uffizi"}),
         Museum.create({name:"Accademia"}),
         Museum.create({name:"Borghese"}),

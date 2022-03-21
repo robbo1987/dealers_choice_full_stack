@@ -47,4 +47,4 @@ const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;
 
-//need to add a delete function, Router, forms and then clean up
+//need to add a delete THUNK, Router, forms and then clean up

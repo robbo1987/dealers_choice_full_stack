@@ -43,6 +43,11 @@ export const loadMuseums = () => {
     dispatch({ type: LOAD_MUSEUMS, museums: museums.data });
   };
 };
+
+export const destroy = async (artist) => {
+  await axios.delete(`/api/artists/${artist.id}`);
+  dispatch({ type: DESTROY_ARTIST, artist });
+};
 const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;

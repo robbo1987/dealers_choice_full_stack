@@ -3,12 +3,8 @@ import React from "react";
 import { connect } from "react-redux";
 import store from "./store";
 
-const destroy = async (artist) => {
-  await axios.delete(`/api/artists/${artist.id}`);
-  store.dispatch({ type: "DESTROY_ARTIST", artist });
-};
 
-const Artists = ({ artists }) => {
+const Artists = ({ artists, destroy }) => {
   return (
     <ul>
       {artists.map((artist) => {
@@ -23,4 +19,13 @@ const Artists = ({ artists }) => {
   );
 };
 
-export default connect((state) => state)(Artists);
+const mapDispatch = (dispatch) => {
+    return {
+      destroy: async (artist) => {
+      await axios.delete(`/api/artists/${artist.id}`);
+      dispatch({ type: "DESTROY_ARTIST", artist });
+     }
+    }
+  }
+
+export default connect((state) => state,mapDispatch)(Artists);

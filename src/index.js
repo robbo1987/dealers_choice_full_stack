@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
-import Artists from "./Artists";
-import Museums from "./Museums";
+import Artists from "./Artists.react";
+import Museums from "./Museums.react";
 import store, {loadArtists,loadMuseums} from "./store"
 import {Provider,connect} from "react-redux"
 

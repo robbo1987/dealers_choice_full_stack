@@ -1,45 +1,11 @@
-const Sequelize = require("sequelize");
-const db = new Sequelize(
-  process.env.DATABASE_URL || "postgres://localhost/dealers_choice_full_stack"
-);
-const STRING = Sequelize.DataTypes.STRING;
-
-const Artist = db.define("artist", {
-  name: {
-    type: STRING,
-    unique: true,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
-  },
-  period: {
-    type: Sequelize.ENUM(
-      "High Renaissance",
-      "Late Renaissance",
-      "Renaissance",
-      "Baroque",
-      "Modern"
-    ),
-  },
-});
-
-const Museum = db.define("museum", {
-  name: {
-    type: STRING,
-    unnique: true,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
-  },
-});
+const {Artist, Museum, db} = require ("./db")
 
 //express app
 
 const express = require("express");
 const app = express();
 const path = require("path");
+const port = process.env.PORT || 3000;
 
 app.use("/dist", express.static(path.join(__dirname, "dist")));
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
@@ -72,7 +38,7 @@ app.get("/api/museums", async (req, res, next) => {
   }
 });
 
-const port = process.env.PORT || 3000;
+
 
 //initiate function
 

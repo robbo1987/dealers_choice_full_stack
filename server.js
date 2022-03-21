@@ -84,7 +84,7 @@ try{
     app.listen(port, ()=> console.log(`listening on port ${port}`));
 }
 catch(ex) {
-   next(ex)
+   console.log(ex)
 }
 
 }

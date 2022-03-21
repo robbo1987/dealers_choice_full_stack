@@ -1,25 +1,14 @@
-import React from "react"
-import store from "./store"
+import React from "react";
+import { connect } from "react-redux";
 
-class Museums extends React.Component{
-    constructor() {
-        super();
-        this.state = store.getState()
-    }
-    componentDidMount() {
-        store.subscribe(() => this.setState(store.getState()))
-    }
+const Museums = ({ museums }) => {
+  return (
+    <ul>
+      {museums.map((museum) => {
+        return <li>{museum.name}</li>;
+      })}
+    </ul>
+  );
+};
 
-render() {
-    const museums = this.state.museums;
-    return(
-        <ul>
-            {museums.map(museum=> {
-                return <li>{museum.name}</li>
-            })}
-        </ul>
-    )
-  }
-}
-
-export default Museums
+export default connect((state) => state)(Museums);

@@ -4,6 +4,7 @@ import axios from "axios";
 import Artists from "./Artists";
 import Museums from "./Museums";
 import store from "./store"
+import {Provider,connect} from "react-redux"
 
 class App extends React.Component {
   
@@ -27,4 +28,4 @@ class App extends React.Component {
     );
   }
 }
-render(<App />, document.querySelector("#root"));
+render(<Provider store={store}><App /></Provider>, document.querySelector("#root"));

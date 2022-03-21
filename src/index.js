@@ -1,19 +1,27 @@
 import React from "react";
 import { render } from "react-dom";
-import axios from "axios";
 import Artists from "./Artists";
 import Museums from "./Museums";
-import store from "./store"
+import store, {loadArtists,loadMuseums} from "./store"
 import {Provider,connect} from "react-redux"
 
-class App extends React.Component {
-  
 
-  async componentDidMount() {
-    const artists = await axios.get("/api/artists");
-    store.dispatch({type:"LOAD_ARTISTS",artists:artists.data})
-    const museums = await axios.get("/api/museums");
-    store.dispatch({type:"LOAD_MUSEUMS", museums:museums.data})
+const _App = connect(
+state => {
+  return state;
+},
+dispatch => {
+  return{
+    bootstrap: async() => {
+      dispatch(loadArtists())
+      dispatch(loadMuseums())
+    },
+  } 
+})
+(class App extends React.Component {
+  componentDidMount() {
+    this.props.bootstrap()
+    
   }
 
   render() {
@@ -27,5 +35,5 @@ class App extends React.Component {
       </div>
     );
   }
-}
-render(<Provider store={store}><App /></Provider>, document.querySelector("#root"));
+})
+render(<Provider store={store}><_App /></Provider>, document.querySelector("#root"));

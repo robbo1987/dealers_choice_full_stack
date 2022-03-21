@@ -46,6 +46,18 @@ app.get('/api/artists', async(req,res,next) => {
     }
 })
 
+app.delete('/api/artists/:id', async(req,res,next) => {
+    try{
+        const artist = await Artist.findByPk(req.params.id)
+        await artist.destroy()
+        res.sendStatus(204)
+    }
+    catch(ex) {
+        next(ex)
+    }
+})
+
+
 app.get('/api/museums', async(req,res,next) => {
     try{
         const museums = await Museum.findAll()

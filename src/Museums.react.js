@@ -5,7 +5,7 @@ const Museums = ({ museums }) => {
   return (
     <ul>
       {museums.map((museum) => {
-        return <li>{museum.name}</li>;
+        return <li key={museum.id}>{museum.name}</li>;
       })}
     </ul>
   );

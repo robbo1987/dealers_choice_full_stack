@@ -16,7 +16,7 @@ const Detail = connect((state) => state)((props) => {
   }
   return (
     <div>
-      {artist.name} - {artist.period}
+      {artist.name} was an Italian Artist from the {artist.period} Period.  He was born {artist.birthday} in Italy.
     </div>
   );
 });

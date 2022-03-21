@@ -25,6 +25,10 @@ const Artist = db.define("artist", {
       "Modern"
     ),
   },
+
+  birthday: {
+    type: STRING
+  }
 });
 
 const Museum = db.define("museum", {

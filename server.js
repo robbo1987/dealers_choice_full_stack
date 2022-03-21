@@ -46,14 +46,14 @@ const init = async () => {
   try {
     await db.sync({ force: true });
     await Promise.all([
-      Artist.create({ name: "Leonardo DaVinci", period: "High Renaissance" }),
-      Artist.create({ name: "Michaelangelo", period: "High Renaissance" }),
-      Artist.create({ name: "Raphael", period: "High Renaissance" }),
-      Artist.create({ name: "Botticelli", period: "Late Renaissance" }),
-      Artist.create({ name: "Carvaggio", period: "Renaissance" }),
-      Artist.create({ name: "Donatello", period: "Renaissance" }),
-      Artist.create({ name: "Bellini", period: "Renaissance" }),
-      Artist.create({ name: "Modigliani", period: "Modern" }),
+      Artist.create({ name: "Leonardo DaVinci", period: "High Renaissance", birthday:"April 15, 1452" }),
+      Artist.create({ name: "Michaelangelo", period: "High Renaissance",birthday:"March 6, 1475" }),
+      Artist.create({ name: "Raphael", period: "High Renaissance",birthday:"April 15, 1452" }),
+      Artist.create({ name: "Botticelli", period: "Late Renaissance",birthday:"Unknown Date, 1483"}),
+      Artist.create({ name: "Carvaggio", period: "Renaissance",birthday:"September 29, 1571" }),
+      Artist.create({ name: "Donatello", period: "Renaissance",birthday:"December 13, 1466" }),
+      Artist.create({ name: "Bellini", period: "Renaissance",birthday:"Unknown Date, 1430" }),
+      Artist.create({ name: "Modigliani", period: "Modern",birthday:"Jul 12, 1884" }),
       Museum.create({ name: "Uffizi" }),
       Museum.create({ name: "Accademia" }),
       Museum.create({ name: "Borghese" }),

@@ -12,6 +12,7 @@ class App extends React.Component {
     const artists = await axios.get("/api/artists");
     store.dispatch({type:"LOAD_ARTISTS",artists:artists.data})
     const museums = await axios.get("/api/museums");
+    store.dispatch({type:"LOAD_MUSEUMS", museums:museums.data})
   }
 
   render() {
@@ -19,13 +20,9 @@ class App extends React.Component {
       <div>
         <h1>Welcome to Robby's Italian Art Tour Guide Site</h1>
         <h2>Here is my list of "TOP TIER" Italian Artists</h2>
-        <div>
           <Artists />
-        </div>
         <h2>Museums to view their works</h2>
-        <div>
-          
-        </div>
+        <Museums />
       </div>
     );
   }

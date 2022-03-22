@@ -9,12 +9,14 @@ import { Provider, connect } from "react-redux";
 import { HashRouter, Route, Link } from "react-router-dom";
 
 const artistDetail = connect((state) => state)((props) => {
+  
   const artist = props.artists.find(
     (artist) => artist.id === props.match.params.id * 1
   );
   if (!artist) {
     return null;
   }
+  console.log(artist)
   return (
     <div>
       <Link to="/Artists"> Back to Artists Page </Link>
@@ -45,6 +47,8 @@ const museumDetail = connect((state) => state)((props) => {
     </div>
   );
 });
+
+
 const _App = connect(
   (state) => {
     return state;

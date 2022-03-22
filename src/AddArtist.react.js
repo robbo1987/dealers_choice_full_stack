@@ -25,7 +25,7 @@ class AddArtist extends React.Component {
     return (
       <form onSubmit={handleSubmit}>
         <input name="name" value={name} placeholder="name" onChange={handleChange} />
-        <button>Create New Artist</button>
+        {!name ? <button disabled>Create New Artist</button> : <button>Create New Artist</button>}
       </form>
     );
   }

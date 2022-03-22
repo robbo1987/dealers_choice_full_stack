@@ -57,11 +57,11 @@ export const addArtist = (name) => {
 }
 
 
-/*  not using this yet- need to figure out how to link to my Artisy component.
+
   export const destroy = async (artist) => {
   await axios.delete(`/api/artists/${artist.id}`);
   dispatch({ type: DESTROY_ARTIST, artist });
-};*/
+  }
 
 
 const store = createStore(reducer, applyMiddleware(thunk));

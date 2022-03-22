@@ -8,6 +8,7 @@ import store, { loadArtists, loadMuseums } from "./store";
 import { Provider, connect } from "react-redux";
 import { HashRouter, Route } from "react-router-dom";
 
+
 const artistDetail = connect((state) => state)((props) => {
   const artist = props.artists.find(
     (artist) => artist.id === props.match.params.id * 1
@@ -58,14 +59,13 @@ const _App = connect(
     render() {
       return (
         <div>
-          <Nav />
           <h1>Welcome to Robby's Italian Art Tour Guide Site</h1>
           <AddArtist />
           <h2>Here is my list of "TOP TIER" Italian Artists</h2>
-          <Route path="/Artists/:id" component={artistDetail} />
+          <Route path="/Artists/:id" exact component={artistDetail} />
           <Artists />
           <h2>Museums to View These Artists and More!</h2>
-          <Route path = "/Museums/:id" component={museumDetail} />
+          <Route path = "/Museums/:id" exact component={museumDetail} />
           <Museums />
         </div>
       );

@@ -4,13 +4,11 @@ import Artists from "./Artists.react";
 import Museums from "./Museums.react";
 import Header from "./Header.react";
 import ArtistDetail from "./ArtistDetail.react";
-import MuseumDetail from "./MuseumDetail.react"
+import MuseumDetail from "./MuseumDetail.react";
 
 import store, { loadArtists, loadMuseums } from "./store";
 import { Provider, connect } from "react-redux";
-import { HashRouter, Route, Link } from "react-router-dom";
-
-
+import { HashRouter, Route } from "react-router-dom";
 
 const _App = connect(
   (state) => {

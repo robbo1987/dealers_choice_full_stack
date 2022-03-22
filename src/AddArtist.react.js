@@ -33,7 +33,7 @@ class AddArtist extends React.Component {
 
 export default connect(null, (dispatch) => {
   return {
-    add: (name,) => {
+    add: (name) => {
       dispatch(addArtist(name));
     },
   };

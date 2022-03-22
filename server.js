@@ -23,7 +23,7 @@ app.get("/api/artists", async (req, res, next) => {
 
 app.get("/api/artists/:id", async (req, res, next) => {
   try {
-    const artis = await Club.findByPk(req.params.id);
+    const artist = await Club.findByPk(req.params.id);
     res.send(artist);
   } catch (err) {
     next(err);
@@ -32,7 +32,7 @@ app.get("/api/artists/:id", async (req, res, next) => {
 
 app.post("/api/artists", async (req, res, next) => {
   try {
-    res.status(201).send(await Artist.create({ name: req.body.name }));
+    console.log(req.body)
   } catch (ex) {
     next(ex);
   }

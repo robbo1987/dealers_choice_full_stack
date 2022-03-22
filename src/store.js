@@ -51,8 +51,9 @@ export const loadMuseums = () => {
 
 export const addArtist = (name) => {
   return async(dispatch) => {
-  const artist = await (axios.post('/api/artists'), {name}).data
-  dispatch({type:ADD_ARTIST,artist})
+  console.log(name)
+  /*const artist = await (axios.post('/api/artists', name)).data
+  dispatch({type:ADD_ARTIST,name},artist)*/
   }
 }
 

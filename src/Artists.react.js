@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 
 const Artists = ({ artists, destroy }) => {
   return (
+    <div>
+    
+      <Link to= '/'> Back Home </Link>
+      
     <ul>
       {artists.map((artist) => {
         return (
@@ -16,6 +20,7 @@ const Artists = ({ artists, destroy }) => {
         );
       })}
     </ul>
+    </div>
   );
 };
 

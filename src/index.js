@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import Artists from "./Artists.react";
 import Museums from "./Museums.react";
+import Header from "./Header.react";
 import AddArtist from "./AddArtist.react";
 import store, { loadArtists, loadMuseums } from "./store";
 import { Provider, connect } from "react-redux";
@@ -56,15 +57,13 @@ const _App = connect(
     render() {
       return (
         <div>
-          <h1>Welcome to Robby's Italian Art Tour Guide Site</h1>
-          <AddArtist />
-          <h2>Here is my list of "TOP TIER" Italian Artists</h2>
-          <Artists />
+          <Route path="/" exact component={Header} />
+          
+          <Route path = '/Artists' exact component ={Artists}/>
+
           <Route path="/Artists/:id" exact component={artistDetail} />
-
-          <h2>Museums to View These Artists and More!</h2>
-
-          <Museums />
+          
+          <Route path="/Museums" exact component={Museums} />
           <Route path="/Museums/:id" exact component={museumDetail} />
         </div>
       );

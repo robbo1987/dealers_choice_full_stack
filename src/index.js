@@ -3,7 +3,7 @@ import { render } from "react-dom";
 import Artists from "./Artists.react";
 import Museums from "./Museums.react";
 import Header from "./Header.react";
-import AddArtist from "./AddArtist.react";
+
 import store, { loadArtists, loadMuseums } from "./store";
 import { Provider, connect } from "react-redux";
 import { HashRouter, Route, Link } from "react-router-dom";
@@ -69,6 +69,7 @@ const _App = connect(
           <Route path="/" exact component={Header} />
           
           <Route path = '/Artists' exact component ={Artists}/>
+         
 
           <Route path="/Artists/:id" exact component={artistDetail} />
           

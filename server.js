@@ -19,6 +19,7 @@ app.get("/api/artists", async (req, res, next) => {
   }
 });
 
+
 app.delete("/api/artists/:id", async (req, res, next) => {
   try {
     const artist = await Artist.findByPk(req.params.id);
@@ -31,7 +32,7 @@ app.delete("/api/artists/:id", async (req, res, next) => {
 
 app.post("/api/artists", async (req,res,next) => {
   try{
-        res.status(201).send( await Artist.create({name:req.body.name}))
+        res.status(201).send( await Artist.Create({name:req.body.name}))
   }
   catch(ex){
     next(ex)

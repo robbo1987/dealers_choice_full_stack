@@ -7,7 +7,7 @@ import store, { loadArtists, loadMuseums } from "./store";
 import { Provider, connect } from "react-redux";
 import { HashRouter, Route } from "react-router-dom";
 
-const Detail = connect((state) => state)((props) => {
+const artistDetail = connect((state) => state)((props) => {
   const artist = props.artists.find(
     (artist) => artist.id === props.match.params.id * 1
   );
@@ -17,10 +17,25 @@ const Detail = connect((state) => state)((props) => {
   return (
     <div>
       {artist.name} was an Italian Artist from the {artist.period} Period.  He was born {artist.birthday} in Italy.
+      
     </div>
   );
 });
 
+const museumDetail = connect((state)=>state)((props) => {
+  const museum = props.museums.find(
+    museum => museum.id === props.match.params.id*1
+  );
+  if (!museum) {
+    return null 
+  }
+  return(
+    <li>
+      {museum.name} is located at {museum.address}
+      
+    </li>
+  )
+})
 const _App = connect(
   (state) => {
     return state;
@@ -45,9 +60,10 @@ const _App = connect(
           <Nav />
           <h1>Welcome to Robby's Italian Art Tour Guide Site</h1>
           <h2>Here is my list of "TOP TIER" Italian Artists</h2>
-          <Route path="/Artists/:id" component={Detail} />
+          <Route path="/Artists/:id" component={artistDetail} />
           <Artists />
-          <h2>Museums to view their works</h2>
+          <h2>Museums to View These Artists and More!</h2>
+          <Route path = "/Museums/:id" component={museumDetail} />
           <Museums />
         </div>
       );

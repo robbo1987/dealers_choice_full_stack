@@ -54,12 +54,12 @@ const init = async () => {
       Artist.create({ name: "Donatello", period: "Renaissance",birthday:"December 13, 1466" }),
       Artist.create({ name: "Bellini", period: "Renaissance",birthday:"Unknown Date, 1430" }),
       Artist.create({ name: "Modigliani", period: "Modern",birthday:"Jul 12, 1884" }),
-      Museum.create({ name: "Uffizi" }),
-      Museum.create({ name: "Accademia" }),
-      Museum.create({ name: "Borghese" }),
-      Museum.create({ name: "Bargello" }),
-      Museum.create({ name: "Vatican" }),
-      Museum.create({ name: "Castel Sant-Angelo" }),
+      Museum.create({ name: "Uffizi", address:"Piazzale degli Uffizi, 6, 50122 Firenze FI, Italy" }),
+      Museum.create({ name: "Accademia",address:"Via Ricasoli, 58/60, 50129 Firenze FI, Italy" }),
+      Museum.create({ name: "Borghese", address:'Piazzale Scipione Borghese, 5, 00197 Roma RM, Italy'}),
+      Museum.create({ name: "Bargello",address:'Via del Proconsolo, 4, 50122 Firenze FI, Italy' }),
+      Museum.create({ name: "Vatican", address: "Vatican City, Vatican" }),
+      Museum.create({ name: "Castel Sant-Angelo", address:'Lungotevere Castello, 50, 00193 Roma RM, Italy' }),
     ]);
 
     app.listen(port, () => console.log(`listening on port ${port}`));

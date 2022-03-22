@@ -1,6 +1,5 @@
 //server
 
-
 const Sequelize = require("sequelize");
 const db = new Sequelize(
   process.env.DATABASE_URL || "postgres://localhost/dealers_choice_full_stack"
@@ -27,8 +26,8 @@ const Artist = db.define("artist", {
   },
 
   birthday: {
-    type: STRING
-  }
+    type: STRING,
+  },
 });
 
 const Museum = db.define("museum", {
@@ -40,10 +39,13 @@ const Museum = db.define("museum", {
       notEmpty: true,
     },
   },
+  address: {
+    type: STRING,
+  },
 });
 
 module.exports = {
-    Artist,
-    Museum,
-    db
-}
+  Artist,
+  Museum,
+  db,
+};

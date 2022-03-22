@@ -4,27 +4,13 @@ import Artists from "./Artists.react";
 import Museums from "./Museums.react";
 import Header from "./Header.react";
 import ArtistDetail from "./ArtistDetail.react";
+import MuseumDetail from "./MuseumDetail.react"
 
 import store, { loadArtists, loadMuseums } from "./store";
 import { Provider, connect } from "react-redux";
 import { HashRouter, Route, Link } from "react-router-dom";
 
-const museumDetail = connect((state) => state)((props) => {
-  const museum = props.museums.find(
-    (museum) => museum.id === props.match.params.id * 1
-  );
-  if (!museum) {
-    return null;
-  }
-  return (
-    <div>
-      <Link to="/Museums"> Back to Museums Page </Link>
-      <li>
-        {museum.name} is located at {museum.address}
-      </li>
-    </div>
-  );
-});
+
 
 const _App = connect(
   (state) => {
@@ -54,7 +40,7 @@ const _App = connect(
           <Route path="/Artists/:id" exact component={ArtistDetail} />
 
           <Route path="/Museums" exact component={Museums} />
-          <Route path="/Museums/:id" exact component={museumDetail} />
+          <Route path="/Museums/:id" exact component={MuseumDetail} />
         </div>
       );
     }

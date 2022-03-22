@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 const LOAD_ARTISTS = "LOAD_ARTISTS";
 const LOAD_MUSEUMS = "LOAD_MUSEUMS";
 const DESTROY_ARTIST = "DESTROY_ARTIST";
+const ADD_ARTIST = "ADD_ARTIST"
 import axios from "axios";
 import thunk from "redux-thunk";
 
@@ -13,6 +14,10 @@ const artistReducer = (state = [], action) => {
     const artists = state.filter((artist) => artist.id !== action.artist.id);
     state = artists;
     return state;
+  }
+  if(action.type === ADD_ARTIST) {
+    const artist = [...state,action.artist]
+    return artist
   }
 
   return state;
@@ -43,6 +48,13 @@ export const loadMuseums = () => {
     dispatch({ type: LOAD_MUSEUMS, museums: museums.data });
   };
 };
+
+export const addArtist = (name) => {
+  return async() => {
+  const artist = await (axios.post('/api/artists/'), {name}).data
+  
+  }
+}
 
 
 /*  not using this yet- need to figure out how to link to my Artisy component.

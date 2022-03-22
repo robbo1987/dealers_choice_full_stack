@@ -1,7 +1,8 @@
 import React, {component} from "react"
-import axios from "axios"
-import store from "./store"
+import {addArtist} from "./store"
 import {connect} from "react-redux"
+
+
 
 class AddArtist extends React.Component{
     constructor(){
@@ -13,13 +14,18 @@ class AddArtist extends React.Component{
     render(){
         const {name} = this.state
         return(
-            <form onSubmit={()=> {}}>
+            <form onSubmit={(ev)=> {
+                console.log(ev); 
+                ev.preventDefault();
+                this.props.add(this.state.name)
+            }}>
                 <input 
                 placeholder="add your favorite artist"
                 value = {name} 
+                name = "title"
                 onChange = {(ev)=> this.setState({name: ev.target.value})}/>
                 
-                <button type="submit" className="add">
+                <button type="submit" className="add" disabled={!name}>
                     Add Artist
                 </button>
             </form>
@@ -28,4 +34,10 @@ class AddArtist extends React.Component{
 }
 
 
-export default connect((state) => state)(AddArtist);
+export default connect(null, (dispatch) =>{
+    return{
+        add: (name) => {
+            dispatch(addArtist(name))
+        }
+    }
+})(AddArtist);

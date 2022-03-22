@@ -29,14 +29,15 @@ app.delete("/api/artists/:id", async (req, res, next) => {
   }
 });
 
-/*app.post("/api/artists", async (req,res,next) => {
+app.post("/api/artists", async (req,res,next) => {
   try{
-        const artist = 
+        const artist = await Artist.findByPk(req.params.id)
+        res.send(artist).status(201) 
   }
   catch(ex){
     next(ex)
   }
-})*/
+})
 
 app.get("/api/museums", async (req, res, next) => {
   try {

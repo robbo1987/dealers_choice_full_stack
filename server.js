@@ -31,8 +31,7 @@ app.delete("/api/artists/:id", async (req, res, next) => {
 
 app.post("/api/artists", async (req,res,next) => {
   try{
-        const artist = await Artist.findByPk(req.params.id)
-        res.send(artist).status(201) 
+        res.status(201).send( await Artist.create({name:req.body.name}))
   }
   catch(ex){
     next(ex)

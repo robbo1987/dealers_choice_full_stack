@@ -6,7 +6,7 @@ const Museums = ({ museums }) => {
   return (
     <div>
       <Link to="/"> Back Home </Link>
-
+      <h1>Robby's Italian Museum Page</h1>
       <ul>
         {museums.map((museum) => {
           return (

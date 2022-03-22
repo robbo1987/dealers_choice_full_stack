@@ -50,18 +50,20 @@ export const loadMuseums = () => {
 };
 
 export const addArtist = (name) => {
-  return async() => {
-  const artist = await (axios.post('/api/artists/'), {name}).data
-  
+  return async(dispatch) => {
+  const artist = await (axios.post('/api/artists'), {name}).data
+  dispatch({type:ADD_ARTIST,artist})
   }
 }
 
 
 
-  export const destroy = async (artist) => {
+export const destroy = (artist) => {
+  return async(dispatch) => {
   await axios.delete(`/api/artists/${artist.id}`);
   dispatch({ type: DESTROY_ARTIST, artist });
   }
+}
 
 
 const store = createStore(reducer, applyMiddleware(thunk));

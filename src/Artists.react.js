@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { destroy } from "./store";
 import { connect } from "react-redux";
 import AddArtist from "./AddArtist.react"
 
@@ -11,6 +12,7 @@ const Artists = ({ artists, destroy }) => {
       
       <Link to= '/'> Back Home </Link>
       <div>
+        <h1>Robby's Italian Art Page</h1>
         < AddArtist/>
       </div>
       
@@ -30,11 +32,8 @@ const Artists = ({ artists, destroy }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    destroy: async (artist) => {
-      await axios.delete(`/api/artists/${artist.id}`);
-      dispatch({ type: "DESTROY_ARTIST", artist });
-    },
+    destroy: artist => dispatch(destroy(artist))
+    }
   };
-};
 
 export default connect((state) => state, mapDispatch)(Artists);

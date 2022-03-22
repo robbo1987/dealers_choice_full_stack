@@ -32,7 +32,8 @@ app.get("/api/artists/:id", async (req, res, next) => {
 
 app.post("/api/artists", async (req, res, next) => {
   try {
-    console.log(req.body)
+    const { name } = req.body;
+    res.send(await Artist.create({ name }));
   } catch (ex) {
     next(ex);
   }

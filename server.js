@@ -29,6 +29,15 @@ app.delete("/api/artists/:id", async (req, res, next) => {
   }
 });
 
+/*app.post("/api/artists", async (req,res,next) => {
+  try{
+        const artist = 
+  }
+  catch(ex){
+    next(ex)
+  }
+})*/
+
 app.get("/api/museums", async (req, res, next) => {
   try {
     const museums = await Museum.findAll();

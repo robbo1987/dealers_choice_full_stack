@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import Artists from "./Artists.react";
 import Museums from "./Museums.react";
 import Nav from "./Nav.react";
+import AddArtist from "./AddArtist.react"
 import store, { loadArtists, loadMuseums } from "./store";
 import { Provider, connect } from "react-redux";
 import { HashRouter, Route } from "react-router-dom";
@@ -59,6 +60,7 @@ const _App = connect(
         <div>
           <Nav />
           <h1>Welcome to Robby's Italian Art Tour Guide Site</h1>
+          <AddArtist />
           <h2>Here is my list of "TOP TIER" Italian Artists</h2>
           <Route path="/Artists/:id" component={artistDetail} />
           <Artists />

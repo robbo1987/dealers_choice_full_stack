@@ -6,7 +6,7 @@ import Header from "./Header.react";
 import AddArtist from "./AddArtist.react";
 import store, { loadArtists, loadMuseums } from "./store";
 import { Provider, connect } from "react-redux";
-import { HashRouter, Route } from "react-router-dom";
+import { HashRouter, Route, Link } from "react-router-dom";
 
 const artistDetail = connect((state) => state)((props) => {
   const artist = props.artists.find(
@@ -16,10 +16,16 @@ const artistDetail = connect((state) => state)((props) => {
     return null;
   }
   return (
+    <div>
+      <Link to="/Artists"> Back to Artists Page </Link>
     <li>
       {artist.name} was an Italian Artist from the {artist.period} Period. He
       was born {artist.birthday} in Italy.
     </li>
+    
+    
+    
+    </div>
   );
 });
 
@@ -31,9 +37,12 @@ const museumDetail = connect((state) => state)((props) => {
     return null;
   }
   return (
+    <div>
+      <Link to="/Museums"> Back to Museums Page </Link>
     <li>
       {museum.name} is located at {museum.address}
     </li>
+    </div>
   );
 });
 const _App = connect(

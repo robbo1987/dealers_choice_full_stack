@@ -1,14 +1,18 @@
 import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
+import AddArtist from "./AddArtist.react"
 
 import { Link } from "react-router-dom";
 
 const Artists = ({ artists, destroy }) => {
   return (
     <div>
-    
+      
       <Link to= '/'> Back Home </Link>
+      <div>
+        < AddArtist/>
+      </div>
       
     <ul>
       {artists.map((artist) => {
